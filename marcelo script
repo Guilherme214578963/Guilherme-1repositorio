@@ -1,0 +1,18 @@
+interface f0/1
+switchport mode access 
+switchport access vlan 20
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10
+end
+
+conf t 
+vlan id
+name studant
+end 
+
+interface g0/0.10 
+encapsulation do1q 10
+ip address 172.17.10.1 255.255.255.0
+interface g0/0 
+no shutdown 
