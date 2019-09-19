@@ -1,0 +1,91 @@
+enable
+conf t 
+hostname SW-04
+banner motd "ACESSO AUTORIZADO APENAS PARA O DEPARTAMENTO DE TI!"
+enable secret SenhadaEnable
+line console 0
+password SenhadaConsole
+login
+interface g0/0 
+no shutdown
+interface g0/1
+no shutdown
+interface se0/0/0
+no shutdown
+interface se0/0/1
+no shutdown
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret senha SenhaEst 
+service password-encryption
+line vty 0 15
+password SenhadaVTY
+transport input ssh
+exec-timeout 10
+login local
+service password-encryption
+do wr
+
+interface se0/0/0
+ip address 172.16.42.1 255.255.254.0
+description REDE 172.16.42.13/23
+no shoutdown
+exit
+interface se0/0/1
+ip address 172.16.42.1 255.255.254.0
+description REDE 172.16.42.10/23
+no shoutdown 
+do wr
+
+enable
+configure terminal
+ip domain-name senai.local
+username administrador privilege 15 secret 
+username estagiario privilege 1 secret 
+login block-for 180 attempts 3 within 60
+security passwords min-length 8
+crypto key generate rsa general-keys modulus 1024
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 10
+do wr
+
+interface g0/1
+ip address 192.168.1.224 255.255.255.224
+description REDE 192.168.1.1/27
+no shoutdown
+exit
+interface g0/0
+ip address 192.168.1.224 255.255.255.224
+description REDE 192.168.1.5/27
+no shoutdown 
+do wr
+
+enable
+conf t
+banner motd "ACESSO AUTORIZADO APENAS PARA O DEPARTAMENTO DE TI!"
+enable secret SenhadaEnable
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+username administrador privilege 15 secret SenhaAdmin
+username estagiario privilege 1 secret senha SenhaEst 
+line console 0
+password SenhadaConsole
+login
+exit
+service password-encryption
+line vty 0 15
+password SenhadaVTY
+transport input ssh
+exec-timeout 10
+login local
+exit
+interface vlan 1
+ip address 192.168.0.0 255.255.255.128
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 200.200.100.4
+do wr
