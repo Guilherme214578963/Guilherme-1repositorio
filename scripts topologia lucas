@@ -1,0 +1,727 @@
+enable
+configure terminal
+hostname RT-02
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senairedes
+security passwords min-length 8
+login block-for 240 attempts 7 within 10
+username erick privilege 15 secret 28047900
+username guilhermedantas privilege 15 secret 28047900
+username cleiton privilege 15 secret 28047900
+username vinicius privilege 15 secret 28047900
+username ruthbraga privilege 15 secret 28047900
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 4
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 10
+exit
+service password-encryption
+interface gigabitethernet 0/1
+no shutdown
+description CONEXAO COM SWITCH-CORE
+exit
+interface gigabitethernet 0/1.100
+encapsulation dot1q 10
+ip address 172.16.0.1 255.255.255.240
+description vlan 100
+interface gigabitethernet 0/1.20
+encapsulation dot1q 20
+ip address 172.16.1.0 255.255.255.0
+description VLAN 20 
+exit
+interface gigabitethernet 0/1.10
+encapsulation dot1q 10
+ip address 172.16.1.1 255.255.255.128
+description VLAN 30 
+exit
+do wr
+
+
+
+enable
+configure terminal
+hostname RT-02
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senairedes
+security passwords min-length 8
+login block-for 240 attempts 7 within 10
+username erick privilege 15 secret 28047900
+username guilhermedantas privilege 15 secret 28047900
+username cleiton privilege 15 secret 28047900
+username vinicius privilege 15 secret 28047900
+username ruthbraga privilege 15 secret 28047900
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 4
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 10
+exit
+service password-encryption
+interface gigabitethernet 0/1
+no shutdown
+description CONEXAO COM SWITCH-CORE
+exit
+interface gigabitethernet 0/1.100
+encapsulation dot1q 10
+ip address 172.16.3.33 255.255.255.224
+description vlan 100
+interface gigabitethernet 0/1.20
+encapsulation dot1q 20
+ip address 172.16.2.129 255.255.255.128
+description VLAN 20 
+exit
+interface gigabitethernet 0/1.10
+encapsulation dot1q 10
+ip address 172.16.3.1 255.255.255.128
+description VLAN 30 
+exit
+do wr
+enable
+configure terminal
+hostname RT-03
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senairedes
+security passwords min-length 8
+login block-for 240 attempts 7 within 10
+username erick privilege 15 secret 28047900
+username guilhermedantas privilege 15 secret 28047900
+username cleiton privilege 15 secret 28047900
+username vinicius privilege 15 secret 28047900
+username ruthbraga privilege 15 secret 28047900
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 4
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 10
+exit
+service password-encryption
+interface gigabitethernet 0/1
+no shutdown
+description CONEXAO COM SWITCH-CORE
+exit
+interface gigabitethernet 0/1.100
+encapsulation dot1q 10
+ip address 172.16.4.1 255.255.255.224
+description vlan 100
+interface gigabitethernet 0/1.20
+encapsulation dot1q 20
+ip address 172.16.1.129 255.255.255.128
+description VLAN 20 
+exit
+interface gigabitethernet 0/1.10
+encapsulation dot1q 10
+ip address 172.16.4.193 255.255.255.224
+description VLAN 30 
+exit
+do wr
+
+
+enable
+configure terminal
+hostname RT-03
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senairedes
+security passwords min-length 8
+login block-for 240 attempts 7 within 10
+username erick privilege 15 secret 28047900
+username guilhermedantas privilege 15 secret 28047900
+username cleiton privilege 15 secret 28047900
+username vinicius privilege 15 secret 28047900
+username ruthbraga privilege 15 secret 28047900
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 4
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 10
+exit
+service password-encryption
+interface gigabitethernet 0/1
+no shutdown
+description CONEXAO COM SWITCH-CORE
+exit
+interface gigabitethernet 0/1.100
+encapsulation dot1q 10
+ip address 172.16.4.1 255.255.255.224
+description vlan 100
+interface gigabitethernet 0/1.20
+encapsulation dot1q 20
+ip address 172.16.1.129 255.255.255.128
+description VLAN 20 
+exit
+interface gigabitethernet 0/1.10
+encapsulation dot1q 10
+ip address 172.16.4.193 255.255.255.224
+description VLAN 30 
+exit
+do wr
+
+enable 
+configure terminal
+hostname SW-01
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+username guilherme privilege 15 secret 280479
+username erick privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.1.143 255.255.255.240
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.1.1
+vlan 10
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+vlan 20
+exit
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+exit
+vlan 100
+exit
+interface gigabitethernet 0/1
+switchport mode access
+switchport access vlan 100
+exit
+interface gigabitethernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-CORE
+exit
+do wr
+
+
+enable 
+configure terminal
+hostname SW-02
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+username guilherme privilege 15 secret 280479
+username erick privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.4.223 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.4.1
+vlan 10
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+vlan 20
+exit
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+exit
+vlan 100
+exit
+interface gigabitethernet 0/1
+switchport mode access
+switchport access vlan 100
+exit
+interface gigabitethernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-CORE
+exit
+do wr
+enable
+configure terminal
+hostname SW-CORE
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+console secret senha04
+username erick privilege 15 secret 280479
+username guilhermedantas privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.1.143 255.255.255.240
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.1.1
+interface gigabitethernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-01
+exit
+interface gigabitethernet 4/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM RT-01
+exit
+interface g0/2
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWICH-02
+exit
+vlan 100
+name DISPOSITIVOS
+exit
+interface fastethernet 3/1
+switchport mode access
+switchport access vlan 100
+description CONEXAO COM SERVER-01
+do wr
+
+enable
+configure terminal
+hostname SW-CORE
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+console secret senha04
+username erick privilege 15 secret 280479
+username guilhermedantas privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.1.143 255.255.255.240
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.1.1
+interface gigabitethernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-01
+exit
+interface gigabitethernet 4/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM RT-01
+exit
+interface g0/2
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWICH-02
+exit
+vlan 100
+name DISPOSITIVOS
+exit
+interface fastethernet 3/1
+switchport mode access
+switchport access vlan 100
+description CONEXAO COM SERVER-01
+do wr
+enable 
+configure terminal
+hostname SW-02
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+username guilherme privilege 15 secret 280479
+username erick privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.4.223 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.4.1
+vlan 10
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+vlan 20
+exit
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+exit
+vlan 100
+exit
+interface gigabitethernet 0/1
+switchport mode access
+switchport access vlan 100
+exit
+interface gigabitethernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-CORE
+exit
+do wr
+
+enable
+configure terminal
+hostname SW-CORE
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+console secret senha04
+username erick privilege 15 secret 280479
+username guilhermedantas privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.3.31 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.3.1
+interface gigabitethernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-01
+exit
+interface gigabitethernet 4/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM RT-01
+exit
+interface g0/2
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWICH-02
+exit
+vlan 100
+name DISPOSITIVOS
+exit
+interface fastethernet 3/1
+switchport mode access
+switchport access vlan 100
+description CONEXAO COM SERVER-01
+do wr
+
+
+enable
+configure terminal
+hostname SW-CORE
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+console secret senha04
+username erick privilege 15 secret 280479
+username guilhermedantas privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.4.223 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.4.1
+interface gigabitethernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-01
+exit
+interface gigabitethernet 4/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM RT-01
+exit
+interface g0/2
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWICH-02
+exit
+vlan 100
+exit
+interface fastethernet 3/1
+switchport mode access
+switchport access vlan 100
+description CONEXAO COM SERVER-01
+exit
+interface g0/1
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99,100
+description CONEXAO COM SWITCH-01
+do wr
+
+enable 
+configure terminal
+hostname SW-02
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+username guilherme privilege 15 secret 280479
+username erick privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.3.31 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.3.1
+vlan 10
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+vlan 20
+exit
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+exit
+vlan 100
+exit
+interface gigabitethernet 0/1
+switchport mode access
+switchport access vlan 100
+exit
+interface gigabitethernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-CORE
+exit
+do wr
+
+
+enable 
+configure terminal
+hostname SW-02
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+username guilherme privilege 15 secret 280479
+username erick privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.3.31 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.3.1
+vlan 10
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+vlan 20
+exit
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 20
+exit
+vlan 100
+exit
+interface gigabitethernet 0/1
+switchport mode access
+switchport access vlan 100
+exit
+interface gigabitethernet 0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-CORE
+exit
+do wr
+enable
+configure terminal
+hostname SW-CORE
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS"
+enable secret senha4
+console secret senha04
+username erick privilege 15 secret 280479
+username guilhermedantas privilege 15 secret 280479
+username ruthbraga privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username cleiton privilege 15 secret 280479
+ip domain-name peachanddaisy.local
+crypto key generate rsa general-keys modulus 1024
+line console 0
+login local
+exec-timeout 10
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+exit
+service password-encryption
+interface vlan 100
+ip address 172.16.4.223 255.255.255.224
+description INTERFACE DE GERENCIAMENTO
+no shutdown
+exit
+ip default-gateway 172.16.4.1
+interface gigabitethernet 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWITCH-01
+exit
+interface gigabitethernet 4/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM RT-01
+exit
+interface g0/2
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,99,100
+description CONEXAO COM SWICH-02
+exit
+vlan 100
+exit
+interface fastethernet 3/1
+switchport mode access
+switchport access vlan 100
+description CONEXAO COM SERVER-01
+exit
+interface g0/1
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,50,60,70,80,99,100
+description CONEXAO COM SWITCH-01
+do wr
+
+
+
+
