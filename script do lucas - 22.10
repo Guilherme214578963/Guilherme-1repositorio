@@ -1,0 +1,104 @@
+enable
+conf t
+vlan 10
+vlan 20
+vlan 30
+vlan 99
+vlan 100
+banner motd "ACESSO AUTORIZADO APENAS PARA O DEPARTAMENTO DE TI!"
+enable secret 28047900
+username kaue privilege 15 secret 280479
+username guilhermedantas privilege 15 secret 280479
+username pedro privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username felipe privilege 15 secret 280479
+line console 0
+password 28047900
+login
+service password-encryption
+line vty 0 15
+password 28047900
+transport input ssh
+exec-timeout 10
+login local
+interface f0/1
+switchport mode access
+switchport access vlan 10
+interface f0/2
+switchport mode access
+switchport access vlan 20
+interface f0/3
+switchport mode access
+switchport access vlan 30
+interface g0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99,100
+interface g0/2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99,100
+interface vlan 100
+ip address 172.16.2.46 255.255.255.224
+description INTERFACE DE GERENCIMENTO
+no shutdown
+exit
+ip default-gateway 172.16.2.1
+do wr
+
+
+
+
+
+
+
+
+enable
+conf t
+vlan 10
+vlan 20
+vlan 30
+vlan 99
+vlan 100
+hostname SW-Core
+banner motd "ACESSO AUTORIZADO APENAS PARA O DEPARTAMENTO DE TI!"
+enable secret 28047900
+username kaue privilege 15 secret 280479
+username guilhermedantas privilege 15 secret 280479
+username pedro privilege 15 secret 280479
+username vinicius privilege 15 secret 280479
+username felipe privilege 15 secret 280479
+line console 0
+password 28047900
+login
+service password-encryption
+line vty 0 15
+password 28047900
+transport input ssh
+exec-timeout 10
+login local
+interface g0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99,100
+interface g1/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99,100
+interface g2/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99,100
+interface vlan 100 
+ip address 172.16.2.62 255.255.255.224
+no shutdown 
+exit
+ip default-gateway 172.16.2.1 
+do wr
+
+
+
+
+
+
+
